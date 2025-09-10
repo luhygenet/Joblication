@@ -1,0 +1,20 @@
+{
+  "pages": {
+    "/users/page": [
+      "static/chunks/5a341_next_dist_0429446a._.js",
+      "static/chunks/next-mosh2_app_favicon_ico_mjs_7a053dd7._.js",
+      "static/chunks/[root-of-the-server]__774d0ba0._.css",
+      "static/chunks/next-mosh2_app_layout_tsx_0f8603c9._.js",
+      "static/chunks/5a341_next_dist_client_components_builtin_global-error_1360bb92.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_e22ddced._.js",
+      "static/chunks/5a341_next_dist_compiled_react-dom_21e547ee._.js",
+      "static/chunks/5a341_next_dist_compiled_next-devtools_index_de16fb51.js",
+      "static/chunks/5a341_next_dist_compiled_a1afe706._.js",
+      "static/chunks/5a341_next_dist_client_4f899ae4._.js",
+      "static/chunks/5a341_next_dist_d6cd0cc8._.js",
+      "static/chunks/5a341_@swc_helpers_cjs_9ae80013._.js",
+      "static/chunks/next-mosh2_a0ff3932._.js",
+      "static/chunks/turbopack-next-mosh2_a1df3855._.js"
+    ]
+  }
+}

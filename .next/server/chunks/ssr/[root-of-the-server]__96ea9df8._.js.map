@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Liya%20Daniel/Desktop/next-mosh2/app/components/addToCart.tsx"],"sourcesContent":["\"use client\";\r\nimport React from \"react\";\r\n\r\nconst AddToCart = () => {\r\n  return (\r\n    <div>\r\n      {\" \"}\r\n      <button\r\n        className=\"btn btn-primary\"\r\n        onClick={() => console.log(\"Added to cart\")}\r\n      >\r\n        Add to Cart\r\n      </button>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default AddToCart;\r\n"],"names":[],"mappings":";;;;;AAAA;;AAGA,MAAM,YAAY;IAChB,qBACE,+PAAC;;YACE;0BACD,+PAAC;gBACC,WAAU;gBACV,SAAS,IAAM,QAAQ,GAAG,CAAC;0BAC5B;;;;;;;;;;;;AAKP;uCAEe","debugId":null}}]
+}

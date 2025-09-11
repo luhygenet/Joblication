@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-# dependencies
-node_modules
 
-#build outputs
-public/output.css
 
 #.environment variables
 .environment
@@ -11,7 +6,7 @@ public/output.css
 #system files
 .DS_Store
 Thumbs.db
-=======
+
 # Logs
 logs
 *.log
@@ -151,4 +146,3 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
->>>>>>> 2f0fe41bcb26157a11275eb056e7e109b6661cde

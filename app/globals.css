@@ -1,5 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import "tailwindcss";
-@plugin "daisyui";
+@import "tailwindcss";
+@tailwind utilities;
+
+@font-face {
+  font-family: "Epilogue";
+  src: url("/fonts/Epilogue-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Italic Epilogue */
+@font-face {
+  font-family: "Epilogue";
+  src: url("/fonts/Epilogue-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
 
 :root {
   --background: #ffffff;
@@ -13,15 +30,18 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .btn-job {
+    @apply rounded-full py-1 px-3 text-xs font-bold tracking-wider cursor-pointer;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white border-1 border-gray-200  p-4 shadow-sm;
+  }
 }

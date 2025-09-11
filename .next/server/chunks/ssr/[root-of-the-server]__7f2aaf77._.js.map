@@ -2,6 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Liya%20Daniel/Desktop/react_next/next-mosh2/app/page.tsx"],"sourcesContent":["import Link from \"next/link\";\nimport ProductCard from \"./components/ProductCard\";\n\nexport default function Home() {\n  return (\n    <div>\n      \n      \n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAGe,SAAS;IACtB,qBACE,8OAAC;;;;;AAKL","debugId":null}}]
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}}]
 }

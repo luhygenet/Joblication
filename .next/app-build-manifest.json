@@ -1,6 +1,6 @@
 {
   "pages": {
-    "/page": [
+    "/dashboard/page": [
       "static/chunks/node_modules_next_dist_8db7fb1f._.js",
       "static/chunks/app_favicon_ico_mjs_e98bdb63._.js",
       "static/chunks/[root-of-the-server]__28bc9c2a._.css",

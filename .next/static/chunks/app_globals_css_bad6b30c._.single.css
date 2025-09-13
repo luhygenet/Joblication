@@ -68,7 +68,6 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
-    --font-weight-black: 900;
     --tracking-wider: .05em;
     --radius-2xl: 1rem;
     --default-font-family: var(--font-geist-sans);
@@ -644,6 +643,14 @@
     margin: calc(var(--spacing) * 3);
   }
 
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
+
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
+
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
   }
@@ -662,6 +669,10 @@
 
   .w-20 {
     width: calc(var(--spacing) * 20);
+  }
+
+  .flex-1 {
+    flex: 1;
   }
 
   .transform {
@@ -735,11 +746,6 @@
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
 
-  .font-black {
-    --tw-font-weight: var(--font-weight-black);
-    font-weight: var(--font-weight-black);
-  }
-
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -757,6 +763,10 @@
 
   .text-\[\#4640DE\] {
     color: #4640de;
+  }
+
+  .text-\[\#25324B\] {
+    color: #25324b;
   }
 
   .text-\[\#FFB836\] {
@@ -794,6 +804,13 @@
 @font-face {
   font-family: Poppins;
   src: url("/fonts/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url("/fonts/Poppins-Bold.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }

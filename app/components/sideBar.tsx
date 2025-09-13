@@ -10,7 +10,7 @@ const SideBar = () => {
       >
         {" "}
         About
-        <SideBarComp imageUrl="/"/>
+        <SideBarComp imageUrl="/svg/plus.svg"/>
       </h1>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
@@ -18,6 +18,7 @@ const SideBar = () => {
       >
         {" "}
         Categories
+        <SideBarComp imageUrl="/svg/plus.svg"/>
       </h1>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
@@ -25,6 +26,7 @@ const SideBar = () => {
       >
         {" "}
         Required Skills
+        <SideBarComp imageUrl="/svg/plus.svg"/>
       </h1>
     </div>
   );

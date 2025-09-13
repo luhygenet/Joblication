@@ -6,7 +6,7 @@ import JobListingCard from "./components/jobListing";
 export default function Home() {
   return (
     <div>
-      <main className="px-20">
+      <main >
         <JobListingCard />
       </main>
     </div>

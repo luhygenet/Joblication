@@ -10,7 +10,31 @@ const SideBar = () => {
       >
         {" "}
         About
-        <SideBarComp imageUrl="/svg/plus.svg" date={new Date('2025-09-14')}/>
+        <SideBarComp
+          imageUrl="/svg/plus.svg"
+          date={new Date("2023-07-1")}
+          stats="Posted On"
+        />
+        <SideBarComp
+          imageUrl="/svg/fire.svg"
+          date={new Date("2023-07-31")}
+          stats="Deadline"
+        />
+        <SideBarComp
+          imageUrl="/svg/location.svg"
+          date="Addis Ababa"
+          stats="Location"
+        />
+        <SideBarComp
+          imageUrl="/svg/cal2.svg"
+          date={new Date("2023-08-02")}
+          stats="Start Date"
+        />
+        <SideBarComp
+          imageUrl="/svg/cal.svg"
+          date={new Date("2023-09-02")}
+          stats="End Date"
+        />
       </h1>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
@@ -18,7 +42,6 @@ const SideBar = () => {
       >
         {" "}
         Categories
-        <SideBarComp imageUrl="/svg/plus.svg" date={new Date('2025-09-14')}/>
       </h1>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
@@ -26,7 +49,6 @@ const SideBar = () => {
       >
         {" "}
         Required Skills
-        <SideBarComp imageUrl="/svg/plus.svg" date={new Date('2025-09-14')}/>
       </h1>
     </div>
   );

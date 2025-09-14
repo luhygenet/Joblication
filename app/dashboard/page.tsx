@@ -1,5 +1,6 @@
 import React from "react";
 import SideBar from "../components/sideBar";
+import SideBarComp from "../components/sideBarComp";
 
 const page = () => {
   return (
@@ -94,12 +95,13 @@ const page = () => {
         >
           When and Where
         </h1>
-        <p style={{ fontFamily: "Epilogue", fontWeight: 400, fontSize: 16 }}>
+        <p  className="flex items-center" style={{ fontFamily: "Epilogue", fontWeight: 400, fontSize: 16 }}>
+          <img src="/svg/location.svg" alt="green_tick" className="pr-3" />
           The onboading event for this event will take place in Jan 18th, 2023
           in AAU Auditorium
         </p>
       </div>
-      <SideBar/>
+      <SideBar />
     </div>
   );
 };

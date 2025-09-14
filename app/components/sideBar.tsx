@@ -3,7 +3,7 @@ import SideBarComp from "./sideBarComp";
 
 const SideBar = () => {
   return (
-    <div>
+    <div className="ml- 3">
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
         className="pt-2 pb-2"
@@ -43,6 +43,16 @@ const SideBar = () => {
         {" "}
         Categories
       </h1>
+      <div>
+        <div className="flex">
+          <a href="" className="btn-job bg-[#fff5ee] text-[#FFB836] mr-2 text-sm">
+            Marketing 
+          </a>
+          <a href="" className="btn-job bg-green-100 text-green-400 mr-2 text-sm">
+            Design
+          </a>
+        </div>
+      </div>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
         className="pt-2 pb-2"

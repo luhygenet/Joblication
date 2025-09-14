@@ -10,7 +10,7 @@ const SideBar = () => {
       >
         {" "}
         About
-        <SideBarComp imageUrl="/svg/plus.svg"/>
+        <SideBarComp imageUrl="/svg/plus.svg" date={new Date('2025-09-14')}/>
       </h1>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
@@ -18,7 +18,7 @@ const SideBar = () => {
       >
         {" "}
         Categories
-        <SideBarComp imageUrl="/svg/plus.svg"/>
+        <SideBarComp imageUrl="/svg/plus.svg" date={new Date('2025-09-14')}/>
       </h1>
       <h1
         style={{ fontFamily: "Poppins-Bold", fontSize: 24 }}
@@ -26,7 +26,7 @@ const SideBar = () => {
       >
         {" "}
         Required Skills
-        <SideBarComp imageUrl="/svg/plus.svg"/>
+        <SideBarComp imageUrl="/svg/plus.svg" date={new Date('2025-09-14')}/>
       </h1>
     </div>
   );

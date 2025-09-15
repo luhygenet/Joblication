@@ -62,7 +62,7 @@
         "required_skills": ["HTML", "CSS", "JavaScript", "PHP"]
       },
       "company": "Tech Innovators",
-      "image": "/job1.png"
+      "image": "/the.png"
     },
     {
       "title": "Graphic designer",
@@ -100,7 +100,7 @@
         ]
       },
       "company": "Creative Designs Co.",
-      "image": "/job1.png"
+      "image": "/tree.png"
     },
     {
       "title": "Data analyst",
@@ -133,7 +133,7 @@
         "required_skills": ["SQL", "Python", "Excel", "Statistical Analysis"]
       },
       "company": "Data Insights Inc.",
-      "image": "/job1.png"
+      "image": "/africa.png"
     },
     {
       "title": "Customer support specialist",

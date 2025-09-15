@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <main >
-        <JobListingCard />
+        {/* <JobListingCard job={} /> */}
       </main>
     </div>
   );

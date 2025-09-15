@@ -2,6 +2,9 @@ import React from "react";
 
 import { BellIcon } from "@heroicons/react/24/solid";
 import JobListingCard from "@/app/components/jobListing";
+import jobs from "@/app/data/jobs.json";
+const { job_postings } = jobs;
+
 const page = () => {
   return (
     <div className="grid grid-cols-4">
@@ -64,10 +67,9 @@ const page = () => {
           </div>
 
           <div className="second">
-            <JobListingCard />
-            <JobListingCard />
-            <JobListingCard />
-            <JobListingCard />
+            {job_postings.map((jobs, index) => (
+              <JobListingCard key={index} job={jobs} />
+            ))}
           </div>
         </div>
       </div>

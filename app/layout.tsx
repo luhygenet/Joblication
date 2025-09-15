@@ -25,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased px-10 py-5`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased px-10 py-5 `}
       >
-        <p>this is layout</p>
-        {children}
+        <div className="text-[#25324B]">
+          <p>this is layout</p>
+          {children}
+        </div>
       </body>
     </html>
   );

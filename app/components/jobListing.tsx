@@ -2,7 +2,7 @@ import React from "react";
 
 const JobListingCard = () => {
   return (
-    <div className="card flex items-start m-3 gap-2">
+    <div className="card flex items-start  gap-2">
       <img src="/img/job.png" alt="person_jb" className="w-20 h-12" />
 
       <div style={{ fontFamily: 'Epilogue', fontWeight: 300 }}>

@@ -4,7 +4,7 @@ import SideBarComp from "../components/sideBarComp";
 
 const page = () => {
   return (
-    <div className="text-[#25324B] grid grid-cols-4 gap-5">
+    <div className=" grid grid-cols-4 gap-5 ">
       <div className="mt-5 md:col-span-3 pl-5 mr-5">
         <h1
           className=" pt-2 pb-2"

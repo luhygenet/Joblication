@@ -7,7 +7,7 @@ type job = {
 const JobListingCard = ({ job }: job) => {
   return (
     <div className="card flex items-start mb-5 gap-2">
-      <img src={`/img${job.image}`} alt="person_jb" className="w-20 h-12" />
+      <img src={`/img${job.image}`} alt="person_jb" className="w-20 h-12 pr-3" />
 
       <div style={{ fontFamily: "Epilogue", fontWeight: 300 }}>
         <h1 className=" font-semibold">{job.title}</h1>

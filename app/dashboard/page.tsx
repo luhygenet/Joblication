@@ -98,7 +98,7 @@ const page = () => {
         <p  className="flex items-center" style={{ fontFamily: "Epilogue", fontWeight: 400, fontSize: 16 }}>
           <img src="/svg/location.svg" alt="green_tick" className="pr-3" />
           The onboading event for this event will take place in Jan 18th, 2023
-          in AAU Auditorium
+          in AAU Auditorium.
         </p>
       </div>
       <SideBar />

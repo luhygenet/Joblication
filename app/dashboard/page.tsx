@@ -86,7 +86,7 @@ const page = () => {
           <li>
             <span className="font-bold">Respectful </span>: Embraces diversity,
             inclusive, and treats others with respect. Abides with all our rules
-            and regulations
+            and regulations or maybe not.
           </li>
         </ul>
         <h1

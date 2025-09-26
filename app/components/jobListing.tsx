@@ -7,18 +7,19 @@ type job = {
   job: Job;
 };
 
-const JobListingCard = ({ id }: { id: string}) => {
-  const {data:specificData} = useGetOppourtunityQuery(id);
-  
-  
-  const specificJobData = specificData?.data
+const JobListingCard = ({ id }: { id: string }) => {
+  const { data: specificData } = useGetOppourtunityQuery(id);
+
+  const specificJobData = specificData?.data;
   return (
     <div className="card flex items-start mb-5 gap-2">
-      <img
-        src={specificJobData?.logoUrl}
-        alt="person_jb"
-        className="w-20 h-12 pr-3"
-      />
+      {specificJobData?.logoUrl && (
+        <img
+          src={specificJobData.logoUrl}
+          alt="person_jb"
+          className="w-20 h-12 pr-3"
+        />
+      )}
 
       <div style={{ fontFamily: "Epilogue", fontWeight: 300 }}>
         <h1 className=" font-semibold">{specificJobData?.title}</h1>

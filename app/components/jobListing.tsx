@@ -8,8 +8,17 @@ type job = {
 };
 
 const JobListingCard = ({ id }: { id: string }) => {
-  const { data: specificData } = useGetOppourtunityQuery(id);
-
+  const {
+    data: specificData,
+    isError,
+    isLoading,
+  } = useGetOppourtunityQuery(id);
+  if (isError) {
+    return <p>Error</p>;
+  }
+  if (isLoading) {
+    return <p>Loading ...</p>;
+  }
   const specificJobData = specificData?.data;
   return (
     <div className="card flex items-start mb-5 gap-2">

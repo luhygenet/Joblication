@@ -5,14 +5,26 @@ import { BellIcon } from "@heroicons/react/24/solid";
 import JobListingCard from "@/app/components/jobListing";
 import jobs from "@/app/data/jobs.json";
 import { useGetAllOppourtunitiesQuery } from "@/app/services/sliceApi";
+import { Divide } from "lucide-react";
 // const { job_postings } = jobs;
 
 const page = () => {
-  const { data: apiResponse } = useGetAllOppourtunitiesQuery();
-  console.log(apiResponse)
-  console.log('ende')
+  const {
+    data: apiResponse,
+    isError,
+    isLoading,
+  } = useGetAllOppourtunitiesQuery();
+  console.log(apiResponse);
+  console.log("ende");
   console.log(apiResponse?.data);
+
   const opportunities = apiResponse?.data ?? [];
+  // if (isError) {
+  //   return <p>Error in loading all</p>;
+  // }
+  // if (isLoading) {
+  //   return <p>Loading all...</p>;
+  // }
 
   return (
     <div className="grid grid-cols-4">
@@ -75,9 +87,15 @@ const page = () => {
           </div>
 
           <div className="second">
-            {opportunities?.map((job, index) => (
-              <JobListingCard key={index} id={job.id} />
-            ))}
+            {isLoading ? (
+              <div className="flex justify-center items-center h-96">
+                <div className="w-8 h-8 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin"></div>
+              </div>
+            ) : (
+              opportunities?.map((job, index) => (
+                <JobListingCard key={index} id={job.id} />
+              ))
+            )}
           </div>
         </div>
       </div>

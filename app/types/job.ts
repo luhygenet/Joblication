@@ -20,3 +20,9 @@ export default interface job {
   company: string;
   image: string;
 }
+
+
+export interface opportunityType {
+  
+
+}

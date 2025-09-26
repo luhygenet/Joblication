@@ -23,6 +23,7 @@ export default interface job {
 
 export interface opportunityType {
   id: string;
+  data: []
   title: string;
   description: string;
   responsibilities: string;
@@ -39,4 +40,21 @@ export interface opportunityType {
   orgID: string;
   datePosted: string;
   logoUrl: string;
+}
+
+
+export interface OpportunityResponse {
+  success: boolean;
+  message: string;
+  data: opportunityType[];
+  errors: any;
+  count: number;
+}
+
+export interface SpecificOpportunityResponse {
+  success: boolean;
+  message: string;
+  data: opportunityType;
+  errors: any;
+  count: number;
 }

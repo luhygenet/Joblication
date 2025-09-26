@@ -1,11 +1,19 @@
+"use client";
 import React from "react";
 
 import { BellIcon } from "@heroicons/react/24/solid";
 import JobListingCard from "@/app/components/jobListing";
 import jobs from "@/app/data/jobs.json";
-const { job_postings } = jobs;
+import { useGetAllOppourtunitiesQuery } from "@/app/services/sliceApi";
+// const { job_postings } = jobs;
 
 const page = () => {
+  const { data: apiResponse } = useGetAllOppourtunitiesQuery();
+  console.log(apiResponse)
+  console.log('ende')
+  console.log(apiResponse?.data);
+  const opportunities = apiResponse?.data ?? [];
+
   return (
     <div className="grid grid-cols-4">
       <div className="col-span-3">
@@ -52,7 +60,7 @@ const page = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   className="w-4 h-4"
                 >
@@ -67,8 +75,8 @@ const page = () => {
           </div>
 
           <div className="second">
-            {job_postings.map((jobs, index) => (
-              <JobListingCard key={index} job={jobs} />
+            {opportunities?.map((job, index) => (
+              <JobListingCard key={index} id={job.id} />
             ))}
           </div>
         </div>

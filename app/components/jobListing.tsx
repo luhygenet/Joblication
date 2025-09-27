@@ -3,6 +3,7 @@
 import React from "react";
 import Job from "@/app/types/job";
 import { useGetOppourtunityQuery } from "../services/sliceApi";
+import { JobSkeletonCard } from "./loadingCard";
 type job = {
   job: Job;
 };
@@ -17,7 +18,14 @@ const JobListingCard = ({ id }: { id: string }) => {
     return <p>Error</p>;
   }
   if (isLoading) {
-    return <p>Loading ...</p>;
+    return (
+      <div>
+        <JobSkeletonCard />
+        <JobSkeletonCard />
+        <JobSkeletonCard />
+        <JobSkeletonCard />
+      </div>
+    );
   }
   const specificJobData = specificData?.data;
   return (

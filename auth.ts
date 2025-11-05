@@ -8,13 +8,16 @@ if (!clientID || !clientSECRET) {
   throw new Error("Missing Google OAuth credentials");
 }
 
-const handler = NextAuth({
-  providers: [
+export const options = {  
+   providers: [
     GoogleProvider({
       clientId: clientID,
       clientSecret: clientSECRET,
     }),
   ],
-});
+
+} 
+
+const handler = NextAuth(options);
 
 export { handler as GET, handler as POST };

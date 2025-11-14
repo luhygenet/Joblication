@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header className="bg-white shadow-">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-10 items-center">
           {/* {status === "loading" ? (
             <div className="w-20 h-4 bg-gray-200 rounded animate-pulse"></div>
           ) : (

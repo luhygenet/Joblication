@@ -4,8 +4,8 @@ import SignUpForm from "../components/signUpForm";
 
 const SignUpPage = () => {
   return (
-    <div className="flex justify-center h-screen px-30 py-2 ">
-      <div className="m-5 ">
+    <div className="flex justify-center h-screen px-30 py-10 ">
+      <div className="mb-5 flex flex-col">
         <h1
           style={{ fontFamily: "Poppins-Bold", fontSize: 32, fontWeight: 900 }}
           className="text-[#25324B] text-center"
@@ -34,7 +34,7 @@ const SignUpPage = () => {
           <p>
             By clicking 'Continue', you acknowledge that you have read and
           </p>
-          <p>
+          <p className="mb-10">
             accepted our <span className="text-[#4640DE]"> Terms of Service </span> and <span className="text">Privacy Policy</span>
           </p>
         </div>

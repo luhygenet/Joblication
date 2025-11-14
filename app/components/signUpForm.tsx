@@ -42,16 +42,19 @@ const SignUpForm = () => {
         <GeneralButton
           font="Epilogue"
           fontSize={16}
-          fontWeight={300}
-          textColor="white"
+          fontWeight={700}
+          textColor="text-white"
           w={700}
-          h={10}
+        
           border={1}
           borderColor="[#CCCCF5]"
-          rounded="rounded"
-          color="[#4640DE]"
+          rounded="rounded-4xl"
+          color="bg-[#4640DE]"
           m={0}
           p={10}
+          px={4}
+          py={2}
+          text="Continue"
         />
         
       </form>

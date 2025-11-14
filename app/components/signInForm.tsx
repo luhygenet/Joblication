@@ -1,7 +1,7 @@
 import React from "react";
 import GeneralButton from "./generalButton";
 
-const SignUpForm = () => {
+const SignInForm = () => {
   return (
     <>
       <form
@@ -9,13 +9,7 @@ const SignUpForm = () => {
         className="flex flex-col gap-3 width-1/2 text-[#515B6F]"
         style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 600 }}
       >
-        <label htmlFor="fullname">Full Name</label>
-
-        <input
-          type="text"
-          id="fullname"
-          className=" py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
-        />
+        
 
         <label htmlFor="email">Email Address</label>
 
@@ -32,13 +26,6 @@ const SignUpForm = () => {
           className=" py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
         />
 
-        <label htmlFor="Confirm password">Confirm Password</label>
-
-        <input
-          type="text"
-          id="Confirm password"
-          className=" py-2 border mb-2 border-[#CCCCF5] rounded text-[#4640DE]"
-        />
         <GeneralButton
           font="Epilogue"
           fontSize={16}
@@ -54,7 +41,7 @@ const SignUpForm = () => {
           p={10}
           px={4}
           py={2}
-          text="Continue"
+          text="Login"
         />
         
       </form>
@@ -62,4 +49,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;

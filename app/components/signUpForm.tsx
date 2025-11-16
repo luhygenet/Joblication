@@ -6,7 +6,7 @@ const SignUpForm = () => {
     <>
       <form
         action=""
-        className="flex flex-col gap-3 width-1/2 text-[#515B6F]"
+        className="flex flex-col gap-3 text-[#515B6F]"
         style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 600 }}
       >
         <label htmlFor="fullname">Full Name</label>
@@ -45,7 +45,7 @@ const SignUpForm = () => {
           fontWeight={700}
           textColor="text-white"
           w={700}
-        
+      
           border={1}
           borderColor="[#CCCCF5]"
           rounded="rounded-4xl"

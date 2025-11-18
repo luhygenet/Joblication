@@ -1,16 +1,33 @@
-"use client"
+"use client";
 import React from "react";
 import GeneralButton from "./generalButton";
-import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
+import { Control, FieldValues, useForm } from "react-hook-form";
+// import { DevTool } from "@hookform/devtools";
+import dynamic from "next/dynamic";
 
+const DevToolNoSSR = dynamic(
+  () => import("@hookform/devtools").then(mod => mod.DevTool),
+  { ssr: false }
+);
+
+type signUpData = {
+  fullname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 const SignUpForm = () => {
-  const form = useForm();
-  const { register, control } = form;
+  const signUpform = useForm<signUpData>();
+  const { register, control, handleSubmit } = signUpform;
+
+  const OnSubmit = (data: signUpData) => {
+    console.log("form submitted:", data);
+  };
   return (
     <>
       <form
         action=""
+        onSubmit={handleSubmit(OnSubmit)}
         className="flex flex-col gap-3 text-[#515B6F]"
         style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 600 }}
       >
@@ -19,7 +36,7 @@ const SignUpForm = () => {
         <input
           type="text"
           id="fullname"
-          className=" py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
+          className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
           {...register("fullname")}
         />
 
@@ -28,7 +45,7 @@ const SignUpForm = () => {
         <input
           type="email"
           id="email"
-          className=" py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
+          className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
           {...register("email")}
         />
         <label htmlFor="password">Password</label>
@@ -36,7 +53,7 @@ const SignUpForm = () => {
         <input
           type="password"
           id="password"
-          className=" py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
+          className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
           {...register("password")}
         />
 
@@ -45,7 +62,7 @@ const SignUpForm = () => {
         <input
           type="password"
           id="Confirm password"
-          className=" py-2 border mb-2 border-[#CCCCF5] rounded text-[#4640DE]"
+          className=" px-2 py-2 border mb-2 border-[#CCCCF5] rounded text-[#4640DE]"
           {...register("confirmPassword")}
         />
         <GeneralButton
@@ -65,7 +82,7 @@ const SignUpForm = () => {
           text="Continue"
         />
       </form>
-      <DevTool control={control} />
+      <DevToolNoSSR control={control as unknown as Control<FieldValues>} />
     </>
   );
 };

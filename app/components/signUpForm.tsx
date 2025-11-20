@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import GeneralButton from "./generalButton";
-import { Control, FieldValues, useForm } from "react-hook-form";
+import { Control, FieldValues, useForm, useFieldArray } from "react-hook-form";
 import dynamic from "next/dynamic";
 import styles from "./Form.module.css";
 import signUpData from "../types/signUp";
@@ -16,18 +16,24 @@ const DevToolNoSSR = dynamic(
 
 const SignUpForm = () => {
   const signUpform = useForm<signUpData>({
-    defaultValues: async ()=> {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
-      const data = await response.json()
+    defaultValues: async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users/1"
+      );
+      const data = await response.json();
       return {
         fullname: data.name,
         email: data.email,
-        password: '',
-        confirmPassword: ''
-      }
+        password: "",
+        confirmPassword: "",
+        // phNums: [{ number: "" }],
+        age: 0,
+        dateOfBirth: new Date(),
+      };
     },
   });
-  const { register, control, handleSubmit, formState, getValues } = signUpform;
+  const { register, control, handleSubmit, formState, getValues, watch } =
+    signUpform;
   const { errors } = formState;
   const { passwordValidation, confirmPasswordValidation } =
     useAuthValidations(getValues);
@@ -38,10 +44,21 @@ const SignUpForm = () => {
     console.log("form submitted:", data);
   };
 
-  // const [nums, setNums] = React.useState(0);
-  // React.useEffect(() => {
+  const [nums, setNums] = React.useState(0);
+ 
+
+  // const watchs = watch("fullname");
+  //  React.useEffect(() => {
   //   setNums((prev) => prev + 1);
-  // }, []);
+  // }, [watchs]);
+
+  //u can watch a form value and do a side effect without causing a rerender
+  useEffect(() => {
+    const subscription = watch((value) => {
+      console.log("watch", value);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
   return (
     <>
       <form
@@ -51,6 +68,7 @@ const SignUpForm = () => {
         style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 600 }}
         noValidate
       >
+        
         <div className="formControl">
           <label htmlFor="fullname">Full Name</label>
 
@@ -103,6 +121,41 @@ const SignUpForm = () => {
 
           <p className="error">{errors.confirmPassword?.message}</p>
         </div>
+
+        {/* <div className="formControl">
+          <label htmlFor="age">Age</label>
+
+          <input
+            type="number"
+            id="age"
+            className=" px-2 py-2 border mb-2 border-[#CCCCF5] rounded text-[#4640DE]"
+            placeholder="Enter your age"
+            {...register("age", {
+              required: { value: true, message: "Age is required" },
+              valueAsNumber: true,
+            })}
+          />
+
+          <p className="error">{errors.age?.message}</p>
+        </div>
+
+        <div className="formControl">
+          <label htmlFor="age">Age</label>
+
+          <input
+            type="date"
+            id="date"
+            className=" px-2 py-2 border mb-2 border-[#CCCCF5] rounded text-[#4640DE]"
+            placeholder="Enter your date of birth"
+            {...register("dateOfBirth", {
+              required: { value: true, message: "Date of birth is required" },
+              valueAsDate: true,
+            })}
+          />
+
+          <p className="error">{errors.dateOfBirth?.message}</p>
+        </div> */}
+
         <GeneralButton
           font="Epilogue"
           fontSize={16}

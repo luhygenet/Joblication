@@ -5,6 +5,9 @@ import { Control, FieldValues, useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import styles from "./Form.module.css";
 import signUpData from "../types/signUp";
+import { useAuthValidations } from "../hooks/useAuthValidations";
+import { useEmailValidation } from "../hooks/useEmailValidation";
+import { useNameValidations } from "../hooks/useNameValidations";
 
 const DevToolNoSSR = dynamic(
   () => import("@hookform/devtools").then((mod) => mod.DevTool),
@@ -12,10 +15,24 @@ const DevToolNoSSR = dynamic(
 );
 
 const SignUpForm = () => {
-  const signUpform = useForm<signUpData>();
-  const { register, control, handleSubmit, formState } = signUpform;
+  const signUpform = useForm<signUpData>({
+    defaultValues: async ()=> {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+      const data = await response.json()
+      return {
+        fullname: data.name,
+        email: data.email,
+        password: '',
+        confirmPassword: ''
+      }
+    },
+  });
+  const { register, control, handleSubmit, formState, getValues } = signUpform;
   const { errors } = formState;
-  console.log("SignUpForm render oops", errors);
+  const { passwordValidation, confirmPasswordValidation } =
+    useAuthValidations(getValues);
+  const { emailValidation } = useEmailValidation(getValues);
+  const { nameValidations } = useNameValidations();
 
   const OnSubmit = (data: signUpData) => {
     console.log("form submitted:", data);
@@ -34,58 +51,57 @@ const SignUpForm = () => {
         style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 600 }}
         noValidate
       >
-        <div className={styles.formControl}>
+        <div className="formControl">
           <label htmlFor="fullname">Full Name</label>
 
           <input
             type="text"
             id="fullname"
             className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
-            {...register("fullname", {
-              required: {
-                value: true,
-                message: "Full name is required",
-              },
-            })}
+            placeholder="Enter your full name"
+            {...register("fullname", nameValidations)}
           />
+          <p className="error">{errors.fullname?.message}</p>
         </div>
 
-        <div className= {styles.formControl}>
+        <div className="formControl">
           <label htmlFor="email">Email Address</label>
 
           <input
             type="email"
             id="email"
             className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
-            {...register("email", {
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Invalid email address",
-              },
-            })}
+            placeholder="ex: abe@gmail.com"
+            {...register("email", emailValidation)}
           />
+          <p className="error">{errors.email?.message}</p>
         </div>
 
-        <div className= {styles.formControl}>
+        <div className="formControl">
           <label htmlFor="password">Password</label>
 
           <input
             type="password"
             id="password"
             className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
-            {...register("password")}
+            placeholder="Enter your password"
+            {...register("password", passwordValidation)}
           />
+          <p className="error">{errors.password?.message}</p>
         </div>
 
-        <div className= {styles.formControl}>
+        <div className="formControl">
           <label htmlFor="Confirm password">Confirm Password</label>
 
           <input
             type="password"
             id="Confirm password"
             className=" px-2 py-2 border mb-2 border-[#CCCCF5] rounded text-[#4640DE]"
-            {...register("confirmPassword")}
+            placeholder="Confirm your password"
+            {...register("confirmPassword", confirmPasswordValidation)}
           />
+
+          <p className="error">{errors.confirmPassword?.message}</p>
         </div>
         <GeneralButton
           font="Epilogue"

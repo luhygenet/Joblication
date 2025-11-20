@@ -50,6 +50,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+::placeholder {
+  color: #ccd0d6; /* gray-400 - lighter gray */
+  font-size: 0.875rem; /* text-sm - smaller size */
+  opacity: 1; /* Firefox */
+}
+
 @layer components {
   .btn-job {
     @apply rounded-full py-1 px-3 text-xs font-bold tracking-wider cursor-pointer;

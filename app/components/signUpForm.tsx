@@ -1,13 +1,20 @@
 "use client";
 import React, { useEffect } from "react";
 import GeneralButton from "./generalButton";
-import { Control, FieldValues, useForm, useFieldArray } from "react-hook-form";
+import {
+  Control,
+  FieldValues,
+  useForm,
+  useFieldArray,
+  FieldErrors,
+} from "react-hook-form";
 import dynamic from "next/dynamic";
 import styles from "./Form.module.css";
 import signUpData from "../types/signUp";
 import { useAuthValidations } from "../hooks/useAuthValidations";
 import { useEmailValidation } from "../hooks/useEmailValidation";
 import { useNameValidations } from "../hooks/useNameValidations";
+import GButton from "./generalButton";
 
 const DevToolNoSSR = dynamic(
   () => import("@hookform/devtools").then((mod) => mod.DevTool),
@@ -32,43 +39,82 @@ const SignUpForm = () => {
       };
     },
   });
-  const { register, control, handleSubmit, formState, getValues, watch } =
-    signUpform;
-  const { errors } = formState;
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    getValues,
+    setValue,
+    watch,
+    reset,
+    trigger,
+  } = signUpform;
+  const {
+    errors,
+    touchedFields,
+    dirtyFields,
+    isDirty,
+    isSubmitting,
+    isSubmitted,
+    isSubmitSuccessful,
+    submitCount,
+  } = formState;
   const { passwordValidation, confirmPasswordValidation } =
     useAuthValidations(getValues);
   const { emailValidation } = useEmailValidation(getValues);
   const { nameValidations } = useNameValidations();
 
-  const OnSubmit = (data: signUpData) => {
-    console.log("form submitted:", data);
+  const OnSubmit = async (data: signUpData) => {
+    console.log("Submitting", data);
+    await new Promise((resolve) => setTimeout(resolve, 3000)); // simulate network delay
+    console.log("Submitted!");
   };
 
-  const [nums, setNums] = React.useState(0);
- 
+  const OnErrors = (errors: FieldErrors<signUpData>) => {
+    console.log("errors:", errors);
+  };
+  // console.log("touchedd fields:", touchedFields);
+  // console.log("dirty fields:", dirtyFields);
+  // console.log("is form dirty:", isDirty);
+  console.log("issubmitting", isSubmitting);
+
+  // const handleGetValues = () => {
+  //   console.log("getValues",getValues())
+  // }
+
+  // const handleSetValues = () => {
+  //      setValue("fullname", "Liya Daniel")
+  // }
+
+  // const [nums, setNums] = React.useState(0);
 
   // const watchs = watch("fullname");
-  //  React.useEffect(() => {
+  // React.useEffect(() => {
   //   setNums((prev) => prev + 1);
   // }, [watchs]);
 
   //u can watch a form value and do a side effect without causing a rerender
+
   useEffect(() => {
-    const subscription = watch((value) => {
-      console.log("watch", value);
+    const sub = watch((value) => {
+      console.log("watched fullname:", value.fullname);
     });
-    return () => subscription.unsubscribe();
+    return () => sub.unsubscribe();
   }, [watch]);
+
   return (
     <>
       <form
         action=""
-        onSubmit={handleSubmit(OnSubmit)}
+        // the reason we us handlesubmit is it prevents dfault page reload of a form
+        // also takes onerrors function
+        // side note rhf validates form (including updating errors and such) before calling onsubmit
+        onSubmit={handleSubmit(OnSubmit, OnErrors)}
         className="flex flex-col gap-3 text-[#515B6F]"
         style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 600 }}
         noValidate
       >
-        
         <div className="formControl">
           <label htmlFor="fullname">Full Name</label>
 
@@ -77,10 +123,15 @@ const SignUpForm = () => {
             id="fullname"
             className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
             placeholder="Enter your full name"
-            {...register("fullname", nameValidations)}
+            {...register("fullname", {
+              ...nameValidations,
+              // disabled: getValues("email") === ""
+            })}
           />
           <p className="error">{errors.fullname?.message}</p>
         </div>
+        {/* <p>{nums}</p> */}
+        {/* <p>{watchedFullname}</p> */}
 
         <div className="formControl">
           <label htmlFor="email">Email Address</label>
@@ -156,7 +207,19 @@ const SignUpForm = () => {
           <p className="error">{errors.dateOfBirth?.message}</p>
         </div> */}
 
-        <GeneralButton
+        <GButton
+          text="Continue"
+          bgColor="bg-[#4640DE]"
+          textColor="text-white"
+          rounded="rounded-4xl"
+          w={700}
+          py={2}
+          loading={isSubmitting} // from react-hook-form
+          onClick={handleSubmit(OnSubmit)}
+        />
+
+        {/* <GeneralButton
+         onclick={handleSetValues}
           font="Epilogue"
           fontSize={16}
           fontWeight={700}
@@ -170,8 +233,14 @@ const SignUpForm = () => {
           p={10}
           px={4}
           py={2}
-          text="Continue"
-        />
+          text="setValues"
+        />  */}
+        <button type="button" onClick={() => reset()}>
+          reset
+        </button>
+        <button type="button" onClick={() => trigger()}>
+          trigger
+        </button>
       </form>
       <DevToolNoSSR control={control as unknown as Control<FieldValues>} />
     </>

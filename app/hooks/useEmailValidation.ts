@@ -18,6 +18,15 @@ export const useEmailValidation = (getValues: () => any) => {
             "This domain is blacklisted"
           );
         },
+
+        emailExists: async (fieldValue: string) => {
+          // Simulate an API call to check if email exists
+          const response = await fetch(
+            `https://jsonplaceholder.typicode.com/users/?email=${fieldValue}`
+          );
+          const data = await response.json();
+          return data.length === 0 || "Email already registered";
+        },
       },
     };
     return { emailValidation };

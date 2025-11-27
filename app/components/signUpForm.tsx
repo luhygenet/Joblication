@@ -15,11 +15,27 @@ import { useAuthValidations } from "../hooks/useAuthValidations";
 import { useEmailValidation } from "../hooks/useEmailValidation";
 import { useNameValidations } from "../hooks/useNameValidations";
 import GButton from "./generalButton";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import * as yup from "yup"
 
 const DevToolNoSSR = dynamic(
   () => import("@hookform/devtools").then((mod) => mod.DevTool),
   { ssr: false }
 );
+
+
+// const signUpSchema = yup.object({
+//   fullname: yup.string().required("Full name is required ok"),
+//   email: yup.string().email("Invalid email ok").required("Full name is required ok"),
+//   password: yup.string().min(6).required(),
+//   confirmPassword: yup
+//     .string()
+//     .oneOf([yup.ref("password")], "Passwords must match ok")
+//     .required(),
+//   age: yup.number().positive().integer().required("Age is requied ok"),
+//   dateOfBirth: yup.date().required("dobrequired"),
+// });
 
 const SignUpForm = () => {
   const signUpform = useForm<signUpData>({
@@ -38,6 +54,7 @@ const SignUpForm = () => {
         dateOfBirth: new Date(),
       };
     },
+    // resolver: yupResolver(signUpSchema)
   });
   const {
     register,
@@ -107,7 +124,7 @@ const SignUpForm = () => {
     <>
       <form
         action=""
-        // the reason we us handlesubmit is it prevents dfault page reload of a form
+        // the reason we use handlesubmit is it prevents default page reload of a form
         // also takes onerrors function
         // side note rhf validates form (including updating errors and such) before calling onsubmit
         onSubmit={handleSubmit(OnSubmit, OnErrors)}

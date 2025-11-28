@@ -16,17 +16,18 @@ import { useEmailValidation } from "../hooks/useEmailValidation";
 import { useNameValidations } from "../hooks/useNameValidations";
 import GButton from "./generalButton";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 
-import * as yup from "yup"
+import * as yup from "yup";
+import useUnifiedAuth from "../hooks/useUnifiedAuth";
 
 const DevToolNoSSR = dynamic(
   () => import("@hookform/devtools").then((mod) => mod.DevTool),
   { ssr: false }
 );
 
-
 // const signUpSchema = yup.object({
-//   fullname: yup.string().required("Full name is required ok"),
+//   name: yup.string().required("Full name is required ok"),
 //   email: yup.string().email("Invalid email ok").required("Full name is required ok"),
 //   password: yup.string().min(6).required(),
 //   confirmPassword: yup
@@ -38,6 +39,8 @@ const DevToolNoSSR = dynamic(
 // });
 
 const SignUpForm = () => {
+  const router = useRouter();
+  const { setpendingEmail } = useUnifiedAuth();
   const signUpform = useForm<signUpData>({
     defaultValues: async () => {
       const response = await fetch(
@@ -45,7 +48,7 @@ const SignUpForm = () => {
       );
       const data = await response.json();
       return {
-        fullname: data.name,
+        name: data.name,
         email: data.email,
         password: "",
         confirmPassword: "",
@@ -83,9 +86,25 @@ const SignUpForm = () => {
   const { nameValidations } = useNameValidations();
 
   const OnSubmit = async (data: signUpData) => {
-    console.log("Submitting", data);
-    await new Promise((resolve) => setTimeout(resolve, 3000)); // simulate network delay
-    console.log("Submitted!");
+    const res = await fetch("https://akil-backend.onrender.com/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data, role: "user" }),
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+      console.log("the matter", response.message);
+    } else {
+      const datafinal = await res.json();
+
+      console.log("pretty ok", datafinal);
+      setpendingEmail(data.email);
+      router.refresh();
+      router.push("/verification");
+    }
   };
 
   const OnErrors = (errors: FieldErrors<signUpData>) => {
@@ -101,12 +120,12 @@ const SignUpForm = () => {
   // }
 
   // const handleSetValues = () => {
-  //      setValue("fullname", "Liya Daniel")
+  //      setValue("name", "Liya Daniel")
   // }
 
   // const [nums, setNums] = React.useState(0);
 
-  // const watchs = watch("fullname");
+  // const watchs = watch("name");
   // React.useEffect(() => {
   //   setNums((prev) => prev + 1);
   // }, [watchs]);
@@ -115,7 +134,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     const sub = watch((value) => {
-      console.log("watched fullname:", value.fullname);
+      console.log("watched name:", value.name);
     });
     return () => sub.unsubscribe();
   }, [watch]);
@@ -133,19 +152,19 @@ const SignUpForm = () => {
         noValidate
       >
         <div className="formControl">
-          <label htmlFor="fullname">Full Name</label>
+          <label htmlFor="name">Full Name</label>
 
           <input
             type="text"
-            id="fullname"
+            id="name"
             className=" px-2 py-2 border border-[#CCCCF5] rounded text-[#4640DE]"
             placeholder="Enter your full name"
-            {...register("fullname", {
+            {...register("name", {
               ...nameValidations,
               // disabled: getValues("email") === ""
             })}
           />
-          <p className="error">{errors.fullname?.message}</p>
+          <p className="error">{errors.name?.message}</p>
         </div>
         {/* <p>{nums}</p> */}
         {/* <p>{watchedFullname}</p> */}

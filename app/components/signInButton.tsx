@@ -1,9 +1,12 @@
+"use client"
 import React from "react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const SignInButton = () => {
+  const router = useRouter();
   const handleSignIn = async () => {
-    await signIn("google", { callbackUrl: "/" });
+    router.push("/signIn");
   };
   return (
     <button

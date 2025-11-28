@@ -26,16 +26,21 @@ const SignUpPage = () => {
         <SignUpForm />
         <div className="flex flex-col m-2">
           <div className="flex mb-4">
-            <p style= {{fontFamily: "Epilogue", fontSize:16, fontWeight:400}} className="pr-3 text-[#202430]">Already have an account?</p>
-            <a href="" className="text-[#4640DE] font-bold ">
+            <p
+              style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 400 }}
+              className="pr-3 text-[#202430]"
+            >
+              Already have an account?
+            </p>
+            <a href="/signIn" className="text-[#4640DE] font-bold ">
               Login
             </a>
           </div>
-          <p>
-            By clicking 'Continue', you acknowledge that you have read and
-          </p>
+          <p>By clicking 'Continue', you acknowledge that you have read and</p>
           <p className="mb-10">
-            accepted our <span className="text-[#4640DE]"> Terms of Service </span> and <span className="text">Privacy Policy</span>
+            accepted our{" "}
+            <span className="text-[#4640DE]"> Terms of Service </span> and{" "}
+            <span className="text">Privacy Policy</span>
           </p>
         </div>
       </div>

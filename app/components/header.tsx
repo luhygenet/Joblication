@@ -1,10 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+// import { signIn, signOut, useSession } from "next-auth/react";
+
 import { getServerSession } from "next-auth";
 import SignOutButton from "./signoutButton";
 import SignInButton from "./signInButton";
+import useUnifiedAuth from "../hooks/useUnifiedAuth";
 
 // function SignOut() {
 //   return (
@@ -19,9 +21,19 @@ import SignInButton from "./signInButton";
 //   );
 // }
 const Header = () => {
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
+  const [hasMounted, setHasMounted] = useState(false);
+  const { isLoggedin, logout, user } = useUnifiedAuth();
   // server components can be used with async while client ones can't
   // const session = await getServerSession();
+  // if (!user && !isLoggedin) {
+  //   return <p>Loading...</p>; // show while checking localStorage or NextAuth session
+  // }
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) return null;
   return (
     <header className="bg-white shadow-">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,11 +45,11 @@ const Header = () => {
               {session?.user?.name || "Not signed in"}
             </p>
           )} */}
-          {session ? (
+          {isLoggedin ? (
             <>
               <div>
                 <p className="text-md text-gray-700">
-                  Welcome! {session?.user?.name || "Not signed in"}
+                  Welcome! {user?.name || "Not signed in"}
                 </p>
               </div>
             </>
@@ -55,13 +67,7 @@ const Header = () => {
               <Link href="/" className="hover:text-blue-600">
                 Contact
               </Link>
-              {session ? (
-                <SignOutButton />
-              ) : (
-                <>
-                  {/* <p>Sign in</p> */}
-                </>
-              )}
+              {isLoggedin ? <SignOutButton /> : <>{/* <p>Sign in</p> */}</>}
             </div>
           </div>
         </div>

@@ -51,7 +51,7 @@ body {
 }
 
 ::placeholder {
-  color: #ccd0d6; /* gray-400 - lighter gray */
+  color: #bdbfc4; /* gray-400 - lighter gray */
   font-size: 0.875rem; /* text-sm - smaller size */
   opacity: 1; /* Firefox */
 }

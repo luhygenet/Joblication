@@ -16,7 +16,7 @@ const SideBar = () => {
           stats="Posted On"
         />
         <SideBarComp
-          imageUrl="/svg/fire.svg"
+          imageUrl="/svg/Fire.svg"
           date={new Date("2023-07-31")}
           stats="Deadline"
         />

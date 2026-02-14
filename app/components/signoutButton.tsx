@@ -2,20 +2,22 @@
 import { signOut } from "next-auth/react";
 import React from "react";
 import useUnifiedAuth from "../hooks/useUnifiedAuth";
+import { Button } from "@/components/ui/button";
 
 const SignOutButton = () => {
   const { logout } = useUnifiedAuth();
-  // const handleSignOut = async () => {
-  //   await signOut({ callbackUrl: "/" });
-  // };
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/" });
+  };
   return (
     <>
-      <button
-        className="btn-job border-1 border-b-purple-600 text-purple-600 text-md"
-        onClick={logout}
+      <Button
+        variant="outline"
+        className="border-purple-400 text-purple-600 hover:bg-purple-50"
+        onClick={handleSignOut}
       >
         Sign Out
-      </button>
+      </Button>
     </>
   );
 };

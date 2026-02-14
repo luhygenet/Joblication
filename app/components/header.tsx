@@ -7,6 +7,8 @@ import { getServerSession } from "next-auth";
 import SignOutButton from "./signoutButton";
 import SignInButton from "./signInButton";
 import useUnifiedAuth from "../hooks/useUnifiedAuth";
+import { Button } from "@/components/ui/button";
+import { Sign } from "crypto";
 
 // function SignOut() {
 //   return (
@@ -36,40 +38,41 @@ const Header = () => {
   if (!hasMounted) return null;
   return (
     <header className="bg-white shadow-">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-10 items-center">
-          {/* {status === "loading" ? (
-            <div className="w-20 h-4 bg-gray-200 rounded animate-pulse"></div>
-          ) : (
-            <p className="text-sm text-gray-700">
-              {session?.user?.name || "Not signed in"}
-            </p>
-          )} */}
-          {isLoggedin ? (
-            <>
-              <div>
-                <p className="text-md text-gray-700">
-                  Welcome! {user?.name || "Not signed in"}
-                </p>
-              </div>
-            </>
-          ) : (
-            <SignInButton />
-          )}{" "}
-          <div>
-            <div className="flex justify-between space-x-8">
-              <Link href="/" className="hover:text-blue-600">
-                Home
-              </Link>
-              <Link href="/" className="hover:text-blue-600">
-                About
-              </Link>
-              <Link href="/" className="hover:text-blue-600">
-                Contact
-              </Link>
-              {isLoggedin ? <SignOutButton /> : <>{/* <p>Sign in</p> */}</>}
+      
+      {/* Navigation */}
+      <nav className="flex items-center justify-between px-6 py-4 md:px-12 border-b border-gray-100">
+        <Link href="/" className="text-2xl font-bold text-slate-900">
+          Joblication
+        </Link>
+        {isLoggedin && (
+          <>
+            <div>
+              <p className="text-md text-gray-700">
+                Welcome! {user?.name || "Not signed in"}
+              </p>
             </div>
-          </div>
+          </>
+        )}
+        <div className="flex items-center gap-8">
+          <Link
+            href="/"
+            className="text-slate-700 hover:text-slate-900 transition"
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="text-slate-700 hover:text-slate-900 transition"
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="text-slate-700 hover:text-slate-900 transition"
+          >
+            Contact
+          </Link>
+          {isLoggedin ? <SignOutButton /> : <SignInButton />}
         </div>
       </nav>
     </header>

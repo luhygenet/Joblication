@@ -1,7 +1,8 @@
-"use client"
+"use client";
 import React from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const SignInButton = () => {
   const router = useRouter();
@@ -9,12 +10,16 @@ const SignInButton = () => {
     router.push("/signIn");
   };
   return (
-    <button
-      className="btn-job border-1 border-b-purple-600 text-purple-600 text-md"
-      onClick={handleSignIn}
-    >
-      Sign In
-    </button>
+    
+      <Button
+        variant="outline"
+        className="border-purple-400 text-purple-600 hover:bg-purple-50"
+        onClick={handleSignIn}
+      >
+        Sign In
+      </Button>
+      
+    
   );
 };
 

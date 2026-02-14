@@ -38,7 +38,6 @@ const Header = () => {
   if (!hasMounted) return null;
   return (
     <header className="bg-white shadow-">
-      
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 md:px-12 border-b border-gray-100">
         <Link href="/" className="text-2xl font-bold text-slate-900">
@@ -61,10 +60,10 @@ const Header = () => {
             Home
           </Link>
           <Link
-            href="/about"
+            href="/dashboard"
             className="text-slate-700 hover:text-slate-900 transition"
           >
-            About
+            Dashboard
           </Link>
           <Link
             href="/contact"

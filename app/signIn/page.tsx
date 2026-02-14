@@ -30,7 +30,7 @@ const SignUpPage = () => {
               style={{ fontFamily: "Epilogue", fontSize: 16, fontWeight: 400 }}
               className="pr-3 text-[#202430]"
             >
-              Don't have an account?
+              Don&apos;t have an account?
             </p>
             <a href="/signUp" className="text-[#4640DE] font-bold ">
               Sign Up

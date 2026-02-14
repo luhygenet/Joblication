@@ -8,7 +8,7 @@ import { useGetAllOppourtunitiesQuery } from "@/app/services/sliceApi";
 import { Divide } from "lucide-react";
 // const { job_postings } = jobs;
 
-const page = () => {
+const Page = () => {
   const {
     data: apiResponse,
     isError,
@@ -104,4 +104,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

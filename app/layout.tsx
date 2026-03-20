@@ -7,6 +7,7 @@ import AuthProvider from "./components/authProvider";
 import "./styles/components/errors.css";
 import "./styles/components/forms.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
 
             <Providers>{children}</Providers>
           </AuthProvider>
+          <SpeedInsights />
           <Analytics debug={true} />
         </div>
       </body>

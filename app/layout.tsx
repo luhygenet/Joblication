@@ -6,6 +6,7 @@ import Header from "./components/header";
 import AuthProvider from "./components/authProvider";
 import "./styles/components/errors.css";
 import "./styles/components/forms.css";
+import { Analytics } from "@vercel/analytics/next"
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
